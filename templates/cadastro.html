@@ -1,0 +1,196 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Cadastre jogadores no Stadium do Coffee">
+
+    <title>Cadastro | Stadium do Coffee</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='paginas.css') }}">
+</head>
+
+<body>
+
+    <!-- CABEÇALHO -->
+    <header class="cabecalho-pagina">
+
+        <h1>STADIUM DO COFFEE</h1>
+
+        <p>BUTTON FOOTBALL CHAMPIONSHIP</p>
+
+    </header>
+
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="container-pagina">
+
+        <!-- NAVEGAÇÃO -->
+        <nav class="navegacao-paginas">
+
+            <a href="{{ url_for('inicio') }}" class="link-voltar">
+                ← Voltar ao início
+            </a>
+
+        </nav>
+
+
+        <!-- TÍTULO -->
+        <section class="titulo-pagina">
+
+            <span class="etiqueta-pagina">
+                ÁREA DOS JOGADORES
+            </span>
+
+            <h2>Cadastro de jogadores</h2>
+
+            <p>
+                Entre para o campeonato e prepare-se para disputar
+                o título do Stadium do Coffee!
+            </p>
+
+        </section>
+
+
+        <!-- FORMULÁRIO -->
+        <section class="painel-cadastro">
+
+            <div class="icone-cadastro">
+                ⚽
+            </div>
+
+            <h3>NOVO JOGADOR</h3>
+
+            <p class="descricao-painel">
+                Preencha os dados abaixo para criar seu cadastro.
+            </p>
+
+
+            <form id="cadastroForm">
+
+                <!-- NOME -->
+                <div class="grupo-campo">
+
+                    <label for="nomeJogador">
+                        Nome completo
+                    </label>
+
+                    <input
+                        type="text"
+                        id="nomeJogador"
+                        name="nome"
+                        placeholder="Digite seu nome"
+                        maxlength="80"
+                        autocomplete="name"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- USUÁRIO -->
+                <div class="grupo-campo">
+
+                    <label for="usuarioJogador">
+                        Nome de usuário
+                    </label>
+
+                    <input
+                        type="text"
+                        id="usuarioJogador"
+                        name="usuario"
+                        placeholder="Ex: marcus10"
+                        maxlength="30"
+                        autocomplete="username"
+                        required
+                    >
+
+                    <small>
+                        Esse identificador deve ser único.
+                    </small>
+
+                </div>
+
+
+                <!-- MENSAGEM -->
+                <div
+                    id="mensagemCadastro"
+                    class="mensagem"
+                    role="status"
+                    aria-live="polite"
+                ></div>
+
+
+                <!-- BOTÃO -->
+                <button type="submit" class="botao-principal">
+                    Cadastrar jogador
+                </button>
+
+            </form>
+
+        </section>
+
+
+        <!-- LISTA DE JOGADORES -->
+        <section class="painel-lista">
+
+            <div class="cabecalho-lista">
+
+                <div>
+                    <span class="etiqueta-pagina">
+                        CAMPEONATO
+                    </span>
+
+                    <h3>Jogadores cadastrados</h3>
+                </div>
+
+                <button
+                    type="button"
+                    id="atualizarJogadores"
+                    class="botao-secundario"
+                >
+                    ↻ Atualizar
+                </button>
+
+            </div>
+
+
+            <ul id="listaJogadores" class="lista-jogadores">
+
+                <li>Carregando jogadores...</li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- RODAPÉ -->
+        <footer class="rodape-pagina">
+
+            <p>
+                STADIUM DO COFFEE © 2026
+            </p>
+
+            <span>
+                O campeonato começa aqui.
+            </span>
+
+        </footer>
+
+    </main>
+
+
+    <!-- JAVASCRIPT -->
+    <script src="{{ url_for('static', filename='js/cadastro.js') }}"></script>
+
+</body>
+
+</html>

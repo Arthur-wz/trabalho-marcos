@@ -1,0 +1,233 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Ranking oficial do Stadium do Coffee">
+
+    <title>Ranking | Stadium do Coffee</title>
+
+    <!-- CSS PRINCIPAL -->
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+    <!-- CSS DAS PÁGINAS -->
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='paginas.css') }}">
+</head>
+
+<body>
+
+    <!-- CABEÇALHO -->
+    <header class="cabecalho-pagina">
+
+        <h1>STADIUM DO COFFEE</h1>
+
+        <p>BUTTON FOOTBALL CHAMPIONSHIP</p>
+
+    </header>
+
+
+    <main class="container-pagina">
+
+        <!-- NAVEGAÇÃO -->
+        <nav class="navegacao-paginas">
+
+            <a href="{{ url_for('inicio') }}" class="link-voltar">
+                ← Voltar ao início
+            </a>
+
+        </nav>
+
+
+        <!-- TÍTULO -->
+        <section class="titulo-pagina">
+
+            <span class="etiqueta-pagina">
+                CAMPEONATO OFICIAL
+            </span>
+
+            <h2>Ranking dos jogadores</h2>
+
+            <p>
+                Confira quem está dominando o campeonato
+                e disputando o topo da classificação!
+            </p>
+
+        </section>
+
+
+        <!-- DESTAQUE -->
+        <section class="destaque-ranking-principal">
+
+            <div class="icone-trofeu">
+                🏆
+            </div>
+
+            <div>
+                <span class="etiqueta-pagina">
+                    CLASSIFICAÇÃO GERAL
+                </span>
+
+                <h3>Os melhores do campeonato</h3>
+
+                <p>
+                    Cada partida vale uma oportunidade de subir
+                    na classificação.
+                </p>
+            </div>
+
+        </section>
+
+
+        <!-- TOTAL DE JOGADORES -->
+        <section class="resumo-ranking">
+
+            <div class="cartao-resumo">
+
+                <span class="icone-resumo">👥</span>
+
+                <div>
+                    <strong id="totalJogadores">0</strong>
+
+                    <p>Jogadores classificados</p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- TIPOS DE RANKING -->
+        <section class="selecao-ranking">
+
+            <button
+                type="button"
+                id="rankingVitorias"
+                class="botao-ranking ativo"
+            >
+                🏆 Ranking de vitórias
+            </button>
+
+            <button
+                type="button"
+                id="rankingArtilheiros"
+                class="botao-ranking"
+            >
+                ⚽ Ranking de artilheiros
+            </button>
+
+        </section>
+
+
+        <!-- CLASSIFICAÇÃO -->
+        <section class="painel-ranking">
+
+            <div class="cabecalho-lista">
+
+                <div>
+
+                    <span class="etiqueta-pagina">
+                        CLASSIFICAÇÃO
+                    </span>
+
+                    <h3 id="tituloRanking">
+                        Ranking de Vitórias
+                    </h3>
+
+                </div>
+
+                <button
+                    type="button"
+                    id="atualizarRanking"
+                    class="botao-secundario"
+                >
+                    ↻ Atualizar
+                </button>
+
+            </div>
+
+
+            <!-- MENSAGEM -->
+            <div
+                id="mensagemRanking"
+                class="mensagem"
+                role="status"
+                aria-live="polite"
+            ></div>
+
+
+            <!-- LISTA DINÂMICA -->
+            <div
+                id="listaRanking"
+                class="lista-ranking"
+                aria-live="polite"
+            >
+
+                <p>Carregando classificação...</p>
+
+            </div>
+
+        </section>
+
+
+        <!-- INFORMAÇÕES -->
+        <section class="informacoes-ranking">
+
+            <h3>Como funciona o ranking?</h3>
+
+            <div class="informacao-ranking-item">
+
+                <span>🏆</span>
+
+                <div>
+                    <strong>Ranking de vitórias</strong>
+
+                    <p>
+                        Classificação baseada no desempenho
+                        dos jogadores nas partidas.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="informacao-ranking-item">
+
+                <span>⚽</span>
+
+                <div>
+                    <strong>Ranking de artilheiros</strong>
+
+                    <p>
+                        Classificação dos jogadores de acordo
+                        com a quantidade de gols marcados.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- RODAPÉ -->
+        <footer class="rodape-pagina">
+
+            <p>STADIUM DO COFFEE © 2026</p>
+
+            <span>O topo pertence aos melhores!</span>
+
+        </footer>
+
+    </main>
+
+
+    <!-- JAVASCRIPT -->
+    <script src="{{ url_for('static', filename='js/ranking.js') }}"></script>
+
+</body>
+
+</html>

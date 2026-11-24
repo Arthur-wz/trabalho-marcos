@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stadium do Coffee</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='paginas.css') }}">
+</head>
+<body>
+
+    <header class="cabecalho-pagina">
+        <h1>STADIUM DO COFFEE</h1>
+        <p>O seu campeonato de futebol de botão começa aqui!</p>
+    </header>
+
+    <main class="container-pagina">
+
+        <section class="painel-cadastro">
+            <h2>Bem-vindo ao Stadium do Coffee!</h2>
+
+            <p>
+                Prepare seu time, desafie seus adversários e dispute
+                partidas para conquistar o topo do ranking.
+            </p>
+
+            <nav class="navegacao-paginas">
+                <a href="{{ url_for('cadastro') }}" class="botao-principal">
+                    Cadastrar jogadores
+                </a>
+
+                <a href="{{ url_for('regras') }}" class="botao-secundario">
+                    Regras do jogo
+                </a>
+
+                <a href="{{ url_for('jogo') }}" class="botao-principal">
+                    Jogar partida
+                </a>
+
+                <a href="{{ url_for('ranking') }}" class="botao-secundario">
+                    Ver ranking
+                </a>
+            </nav>
+        </section>
+
+    </main>
+
+    <footer class="rodape-pagina">
+        <p>Stadium do Coffee - Futebol de Botão</p>
+    </footer>
+
+</body>
+</html>

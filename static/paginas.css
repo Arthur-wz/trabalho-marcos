@@ -1,0 +1,494 @@
+
+/* =====================================================
+   STADIUM DO COFFEE
+   PAGINAS.CSS — ESTILOS COMPARTILHADOS
+   ===================================================== */
+
+/* CONFIGURAÇÕES GERAIS */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+}
+
+main.container-pagina {
+    width: min(1050px, 92%);
+    margin: 0 auto;
+    padding: 20px 0 35px;
+}
+
+/* CABEÇALHO */
+
+.cabecalho-pagina {
+    text-align: center;
+    padding: 20px;
+}
+
+/* NAVEGAÇÃO */
+
+.navegacao-paginas {
+    display: flex;
+    justify-content: flex-start;
+    margin: 15px 0 25px;
+}
+
+.link-voltar {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #7dffb3;
+    text-decoration: none;
+    font-weight: 700;
+    transition: 0.2s;
+}
+
+.link-voltar:hover {
+    color: #ffffff;
+    transform: translateX(-4px);
+}
+
+/* TÍTULOS */
+
+.titulo-pagina {
+    text-align: center;
+    margin: 25px auto 35px;
+}
+
+.titulo-pagina h2 {
+    margin: 10px 0;
+    color: #effff5;
+    font-size: clamp(1.7rem, 4vw, 2.5rem);
+}
+
+.titulo-pagina p {
+    color: #b6c9bd;
+    margin: 8px 0;
+    line-height: 1.6;
+}
+
+.etiqueta-pagina {
+    display: inline-block;
+    padding: 7px 15px;
+    border: 1px solid rgba(83, 255, 165, 0.35);
+    border-radius: 30px;
+    color: #7dffb3;
+    background: rgba(31, 180, 105, 0.10);
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+/* PAINÉIS */
+
+.painel-cadastro,
+.painel-lista {
+    width: 100%;
+    margin: 22px auto;
+    padding: 25px;
+    border: 1px solid rgba(87, 255, 165, 0.18);
+    border-radius: 16px;
+    background: linear-gradient(
+        145deg,
+        rgba(13, 35, 27, 0.96),
+        rgba(9, 20, 17, 0.98)
+    );
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.22);
+}
+
+.painel-cadastro h2,
+.painel-lista h2 {
+    color: #eafff1;
+    margin-top: 0;
+}
+
+.painel-cadastro p {
+    color: #c1d4c9;
+    line-height: 1.7;
+}
+
+/* ÍCONES E DESCRIÇÕES */
+
+.icone-cadastro {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 12px;
+}
+
+.descricao-painel {
+    color: #b9cfc2;
+    line-height: 1.6;
+}
+
+/* FORMULÁRIOS */
+
+.grupo-campo {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 18px 0;
+}
+
+.grupo-campo label {
+    color: #dfffea;
+    font-weight: 700;
+}
+
+.grupo-campo input,
+.grupo-campo select,
+.grupo-campo textarea {
+    width: 100%;
+    padding: 13px 15px;
+    border: 1px solid rgba(125, 255, 179, 0.25);
+    border-radius: 9px;
+    outline: none;
+    color: #ffffff;
+    background: #101f19;
+    font: inherit;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.grupo-campo input:focus,
+.grupo-campo select:focus,
+.grupo-campo textarea:focus {
+    border-color: #55ed9b;
+    box-shadow: 0 0 0 3px rgba(85, 237, 155, 0.12);
+}
+
+.grupo-campo input::placeholder,
+.grupo-campo textarea::placeholder {
+    color: #81958a;
+}
+
+/* MENSAGENS */
+
+.mensagem {
+    margin: 15px 0;
+    padding: 12px;
+    border-radius: 9px;
+    color: #caffdc;
+    background: rgba(49, 190, 108, 0.10);
+    line-height: 1.5;
+}
+
+.mensagem.erro {
+    color: #ffb5b5;
+    background: rgba(255, 65, 75, 0.12);
+}
+
+/* BOTÕES */
+
+.botao-principal,
+.botao-secundario,
+.botao-ranking {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 43px;
+    padding: 12px 20px;
+    border: 1px solid transparent;
+    border-radius: 9px;
+    font: inherit;
+    font-weight: 800;
+    text-decoration: none;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.botao-principal {
+    color: #062014;
+    background: linear-gradient(135deg, #7dffb3, #36d987);
+    box-shadow: 0 5px 15px rgba(54, 217, 135, 0.15);
+}
+
+.botao-principal:hover {
+    filter: brightness(1.1);
+    transform: translateY(-2px);
+}
+
+.botao-secundario {
+    color: #d9ffea;
+    border-color: rgba(125, 255, 179, 0.35);
+    background: rgba(18, 50, 36, 0.8);
+}
+
+.botao-secundario:hover {
+    background: rgba(40, 100, 68, 0.55);
+}
+
+.botao-ranking {
+    color: #b9cfc2;
+    border-color: rgba(125, 255, 179, 0.18);
+    background: rgba(10, 28, 20, 0.8);
+}
+
+.botao-ranking:hover,
+.botao-ranking.ativo {
+    color: #071b11;
+    background: #7dffb3;
+}
+
+/* LISTAS */
+
+.cabecalho-lista {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 18px;
+}
+
+.lista-jogadores,
+.lista-ranking {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.lista-jogadores li,
+.item-ranking {
+    padding: 15px;
+    border: 1px solid rgba(125, 255, 179, 0.13);
+    border-radius: 10px;
+    color: #e5f8ec;
+    background: rgba(255, 255, 255, 0.035);
+}
+
+.lista-jogadores li:hover,
+.item-ranking:hover {
+    border-color: rgba(125, 255, 179, 0.4);
+}
+
+/* RANKING */
+
+.destaque-ranking-principal {
+    text-align: center;
+    padding: 25px;
+    margin-bottom: 25px;
+    border: 1px solid rgba(255, 211, 92, 0.25);
+    border-radius: 16px;
+    background: linear-gradient(
+        135deg,
+        rgba(85, 66, 18, 0.25),
+        rgba(16, 35, 25, 0.95)
+    );
+}
+
+.icone-trofeu {
+    font-size: 3rem;
+}
+
+.resumo-ranking {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.cartao-resumo {
+    padding: 18px;
+    text-align: center;
+    border: 1px solid rgba(125, 255, 179, 0.16);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.035);
+}
+
+.icone-resumo {
+    display: block;
+    font-size: 1.8rem;
+    margin-bottom: 8px;
+}
+
+.selecao-ranking {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.item-ranking {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.posicao-ranking {
+    font-size: 1.3rem;
+    font-weight: 900;
+    color: #7dffb3;
+}
+
+.primeiro-lugar {
+    border-color: rgba(255, 211, 92, 0.55);
+}
+
+.informacoes-jogador {
+    flex: 1;
+}
+
+.estatisticas-jogador {
+    color: #a9c2b3;
+    font-size: 0.85rem;
+}
+
+.destaque-ranking {
+    color: #7dffb3;
+    font-weight: 800;
+}
+
+/* RESULTADO */
+
+.placar {
+    width: min(760px, 100%);
+    margin: 22px auto;
+}
+
+.placar .time {
+    text-align: center;
+}
+
+.placar .time.vermelho h2,
+.placar .time.vermelho span {
+    color: #ff565d;
+}
+
+.placar .time.azul h2,
+.placar .time.azul span {
+    color: #55aaff;
+}
+
+.placar .centro {
+    text-align: center;
+}
+
+.botoes-resultado {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 25px 0;
+}
+
+/* RODAPÉ */
+
+.rodape-pagina {
+    margin-top: 40px;
+    padding: 20px 10px;
+    text-align: center;
+    color: #8fa99a;
+    font-size: 0.85rem;
+}
+
+.rodape-pagina p {
+    margin: 5px 0;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.rodape-pagina span {
+    color: #7dffb3;
+}
+
+/* ACESSIBILIDADE */
+
+button:focus-visible,
+a:focus-visible {
+    outline: 3px solid #7dffb3;
+    outline-offset: 3px;
+}
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 650px) {
+    main.container-pagina {
+        width: 94%;
+        padding-top: 12px;
+    }
+
+    .painel-cadastro,
+    .painel-lista {
+        padding: 18px;
+    }
+
+    .resumo-ranking {
+        grid-template-columns: 1fr;
+    }
+
+    .cabecalho-lista {
+        align-items: flex-start;
+    }
+
+    .botoes-resultado {
+        flex-direction: column;
+    }
+
+    .botoes-resultado button {
+        width: 100%;
+    }
+}
+
+@media (max-width: 400px) {
+    .titulo-pagina h2 {
+        font-size: 1.55rem;
+    }
+
+    .painel-cadastro,
+    .painel-lista {
+        padding: 14px;
+    }
+
+    .item-ranking {
+        gap: 9px;
+        padding: 11px;
+    }
+}
+
+/* MENU PRINCIPAL - STADIUM DO COFFEE */
+
+.painel-cadastro .navegacao-paginas {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+
+    width: 100%;
+    max-width: 420px;
+    margin: 28px auto 10px;
+}
+
+.painel-cadastro .navegacao-paginas a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    min-height: 52px;
+    padding: 14px 20px;
+
+    box-sizing: border-box;
+    text-align: center;
+    text-decoration: none;
+
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 700;
+
+    transition: 0.2s ease;
+}
+
+.painel-cadastro .navegacao-paginas a:hover {
+    transform: translateY(-3px);
+    filter: brightness(1.12);
+}

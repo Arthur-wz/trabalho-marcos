@@ -1,0 +1,93 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Regras do Stadium do Coffee">
+
+    <title>Regras | Stadium do Coffee</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='paginas.css') }}">
+</head>
+
+<body>
+
+    <header>
+        <h1>Stadium do Coffee</h1>
+        <p>Button Football Championship</p>
+    </header>
+
+    <main class="container-pagina">
+
+        <nav class="navegacao-paginas">
+            <a href="{{ url_for('inicio') }}" class="link-voltar">
+                ← Voltar ao início
+            </a>
+        </nav>
+
+        <section class="titulo-pagina">
+            <span class="etiqueta-pagina">REGULAMENTO</span>
+            <h2>Regras do Jogo</h2>
+            <p>Conheça as regras antes de entrar em campo!</p>
+        </section>
+
+        <section class="painel-cadastro">
+
+            <h2>1. Objetivo do jogo</h2>
+            <p>
+                O objetivo é marcar mais gols que o adversário
+                durante o tempo da partida.
+            </p>
+
+            <h2>2. Jogadores e equipes</h2>
+            <p>
+                A partida é disputada entre dois jogadores:
+                um controla a equipe vermelha e o outro a equipe azul.
+                Cada equipe possui cinco peças.
+            </p>
+
+            <h2>3. Como jogar</h2>
+            <p>
+                Os jogadores devem realizar suas jogadas respeitando
+                a alternância de turnos. Cada participante controla
+                as peças de sua própria equipe.
+            </p>
+
+            <h2>4. Tempo de partida</h2>
+            <p>
+                A partida possui duração de cinco minutos.
+                Ao término do tempo, o resultado é definido
+                pela quantidade de gols marcados.
+            </p>
+
+            <h2>5. Como vencer</h2>
+            <p>
+                Vence o jogador que marcar mais gols até o fim
+                da partida. Caso os dois jogadores tenham a mesma
+                quantidade de gols, ocorre um empate.
+            </p>
+
+            <h2>6. Fair play</h2>
+            <p>
+                Respeite seu adversário, siga as regras e mantenha
+                uma competição justa e divertida.
+            </p>
+
+        </section>
+
+        <footer class="rodape-pagina">
+            <p>STADIUM DO COFFEE © 2026</p>
+            <span>Que vença o melhor!</span>
+        </footer>
+
+    </main>
+
+</body>
+</html>

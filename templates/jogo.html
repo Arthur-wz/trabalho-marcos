@@ -1,0 +1,140 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Stadium do Coffee - Partida de futebol de botão">
+    <meta name="theme-color" content="#07140f">
+
+    <title>Partida | Stadium do Coffee</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='jogo.css') }}">
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='paginas.css') }}">
+</head>
+
+<body>
+
+    <header>
+        <h1>Stadium do Coffee</h1>
+        <p>Button Football Championship</p>
+    </header>
+
+    <main>
+
+        <nav class="navegacao-paginas">
+            <a href="{{ url_for('inicio') }}" class="link-voltar">
+                ← Voltar ao início
+            </a>
+        </nav>
+
+        <section class="titulo-pagina">
+            <span class="etiqueta-pagina">CAMPEONATO</span>
+            <h2>Partida em andamento</h2>
+            <p>Prepare sua estratégia e conquiste a vitória!</p>
+        </section>
+
+        <!-- PLACAR -->
+        <section class="placar" aria-label="Placar da partida">
+
+            <div class="time vermelho">
+                <h2>Marcos</h2>
+                <span id="gols1" aria-label="Gols do time vermelho">0</span>
+            </div>
+
+            <div class="centro">
+                <h2 id="tempo" aria-label="Tempo de partida">05:00</h2>
+                <p id="turno">Vez de Marcos 🔴</p>
+            </div>
+
+            <div class="time azul">
+                <h2>Marcus</h2>
+                <span id="gols2" aria-label="Gols do time azul">0</span>
+            </div>
+
+        </section>
+
+        <!-- CAMPO HORIZONTAL -->
+        <section class="campo campo-horizontal"
+                 aria-label="Campo horizontal de futebol de botão">
+
+            <!-- GOL DA ESQUERDA -->
+            <div class="gol gol-topo gol-esquerda"></div>
+
+            <!-- GOL DA DIREITA -->
+            <div class="gol gol-baixo gol-direita"></div>
+
+            <!-- MARCAÇÕES DO CAMPO -->
+            <div class="linha-meio"></div>
+            <div class="circulo-central"></div>
+
+            <!-- ÁREAS -->
+            <div class="area area-topo area-esquerda"></div>
+            <div class="area area-baixo area-direita"></div>
+
+            <!-- JOGADORES VERMELHOS -->
+            <button type="button" class="botao vermelho p1"
+                    aria-label="Jogador vermelho número 1">1</button>
+
+            <button type="button" class="botao vermelho p2"
+                    aria-label="Jogador vermelho número 2">2</button>
+
+            <button type="button" class="botao vermelho p3"
+                    aria-label="Jogador vermelho número 3">3</button>
+
+            <button type="button" class="botao vermelho p4"
+                    aria-label="Jogador vermelho número 4">4</button>
+
+            <button type="button" class="botao vermelho p5"
+                    aria-label="Jogador vermelho número 5">5</button>
+
+            <!-- BOLA -->
+            <div class="bola" role="img" aria-label="Bola do jogo"></div>
+
+            <!-- JOGADORES AZUIS -->
+            <button type="button" class="botao azul p6"
+                    aria-label="Jogador azul número 1">1</button>
+
+            <button type="button" class="botao azul p7"
+                    aria-label="Jogador azul número 2">2</button>
+
+            <button type="button" class="botao azul p8"
+                    aria-label="Jogador azul número 3">3</button>
+
+            <button type="button" class="botao azul p9"
+                    aria-label="Jogador azul número 4">4</button>
+
+            <button type="button" class="botao azul p10"
+                    aria-label="Jogador azul número 5">5</button>
+
+        </section>
+
+        <!-- MENSAGENS -->
+        <section class="informacoes-partida"
+                 aria-label="Informações da partida">
+
+            <p id="mensagem" role="status" aria-live="polite">
+                Selecione um botão para começar.
+            </p>
+
+        </section>
+
+        <footer class="rodape-pagina">
+            <p>STADIUM DO COFFEE © 2026</p>
+            <span>Que vença o melhor!</span>
+        </footer>
+
+    </main>
+
+    <script src="{{ url_for('static', filename='js/jogo.js') }}"></script>
+
+</body>
+</html>

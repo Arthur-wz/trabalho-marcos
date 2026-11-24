@@ -1,0 +1,582 @@
+
+/* =========================================================
+   STADIUM DO COFFEE — JOGO.CSS
+   Campo horizontal e visual do jogo
+   ========================================================= */
+
+/* ÁREA PRINCIPAL */
+main {
+    width: min(1200px, 96%);
+    margin: 0 auto;
+    padding-bottom: 32px;
+}
+
+/* NAVEGAÇÃO E TÍTULO */
+.navegacao-paginas {
+    margin: 18px 0;
+}
+
+.titulo-pagina {
+    text-align: center;
+    margin: 24px auto;
+}
+
+.titulo-pagina h2 {
+    margin: 8px 0;
+}
+
+.titulo-pagina p {
+    margin-top: 6px;
+    opacity: 0.8;
+}
+
+/* =========================================================
+   PLACAR
+   ========================================================= */
+
+.placar {
+    width: min(1000px, 100%);
+    min-height: 112px;
+    margin: 24px auto;
+    padding: 18px 24px;
+
+    display: grid;
+    grid-template-columns: 1fr 1.15fr 1fr;
+    align-items: center;
+    gap: 14px;
+
+    border: 1px solid rgba(92, 255, 174, 0.22);
+    border-radius: 18px;
+
+    background: linear-gradient(
+        135deg,
+        rgba(8, 28, 21, 0.98),
+        rgba(11, 20, 31, 0.98)
+    );
+
+    box-shadow:
+        0 12px 35px rgba(0, 0, 0, 0.28),
+        inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.placar .time {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    min-width: 0;
+}
+
+.placar .time h2 {
+    margin: 0;
+    font-size: clamp(0.95rem, 2.5vw, 1.25rem);
+    font-weight: 800;
+    letter-spacing: 0.04em;
+}
+
+.placar .time span {
+    font-size: clamp(2rem, 5vw, 2.8rem);
+    line-height: 1;
+    font-weight: 900;
+    font-variant-numeric: tabular-nums;
+}
+
+.placar .time.vermelho h2,
+.placar .time.vermelho span {
+    color: #ff565d;
+    text-shadow: 0 0 15px rgba(255, 65, 75, 0.28);
+}
+
+.placar .time.azul h2,
+.placar .time.azul span {
+    color: #55aaff;
+    text-shadow: 0 0 15px rgba(65, 150, 255, 0.28);
+}
+
+.placar .centro {
+    text-align: center;
+    padding: 4px 10px;
+    border-left: 1px solid rgba(255, 255, 255, 0.10);
+    border-right: 1px solid rgba(255, 255, 255, 0.10);
+}
+
+.placar .centro h2 {
+    margin: 0;
+    color: #eafff3;
+    font-size: clamp(1.55rem, 4vw, 2.1rem);
+    font-weight: 900;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.04em;
+}
+
+.placar .centro p {
+    margin: 7px 0 0;
+    color: #b8d8c8;
+    font-size: 0.88rem;
+    font-weight: 600;
+}
+
+/* =========================================================
+   CAMPO HORIZONTAL
+   ========================================================= */
+
+.campo {
+    position: relative;
+    isolation: isolate;
+
+    width: min(1100px, 100%);
+
+    /* CAMPO DEITADO */
+    aspect-ratio: 16 / 9;
+
+    margin: 28px auto;
+    overflow: hidden;
+
+    border: 7px solid #d7e6d8;
+    border-radius: 14px;
+
+    background:
+        repeating-linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0.045) 0,
+            rgba(255, 255, 255, 0.045) 8.333%,
+            rgba(0, 0, 0, 0.035) 8.333%,
+            rgba(0, 0, 0, 0.035) 16.666%
+        ),
+        linear-gradient(
+            135deg,
+            #168b4e,
+            #08733d 55%,
+            #0b8246
+        );
+
+    box-shadow:
+        0 18px 42px rgba(0, 0, 0, 0.38),
+        0 0 0 1px rgba(255, 255, 255, 0.12);
+}
+
+/* LINHAS EXTERNAS */
+.campo::before {
+    content: "";
+    position: absolute;
+    inset: 2.5%;
+    border: 2px solid rgba(238, 255, 241, 0.88);
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* LINHA DO MEIO — AGORA VERTICAL */
+.linha-meio {
+    position: absolute;
+    z-index: 1;
+
+    top: 2.5%;
+    left: 50%;
+
+    width: 2px;
+    height: 95%;
+
+    background: rgba(238, 255, 241, 0.88);
+
+    transform: translateX(-50%);
+    pointer-events: none;
+}
+
+/* CÍRCULO CENTRAL */
+.circulo-central {
+    position: absolute;
+    z-index: 1;
+
+    top: 50%;
+    left: 50%;
+
+    width: 22%;
+    aspect-ratio: 1;
+
+    border: 2px solid rgba(238, 255, 241, 0.88);
+    border-radius: 50%;
+
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+}
+
+.circulo-central::after {
+    content: "";
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    width: 6px;
+    aspect-ratio: 1;
+
+    border-radius: 50%;
+    background: rgba(238, 255, 241, 0.95);
+
+    transform: translate(-50%, -50%);
+}
+
+/* =========================================================
+   ÁREAS DOS GOLS
+   ========================================================= */
+
+.area {
+    position: absolute;
+    z-index: 1;
+
+    border: 2px solid rgba(238, 255, 241, 0.88);
+    pointer-events: none;
+}
+
+/* ÁREA ESQUERDA */
+.area-topo,
+.area.area-esquerda {
+    top: 25%;
+    left: 2.5%;
+
+    width: 15%;
+    height: 50%;
+
+    border-left: 0;
+}
+
+/* ÁREA DIREITA */
+.area-baixo,
+.area.area-direita {
+    top: 25%;
+    right: 2.5%;
+
+    left: auto;
+
+    width: 15%;
+    height: 50%;
+
+    border-right: 0;
+}
+
+/* =========================================================
+   GOLS NAS EXTREMIDADES
+   ========================================================= */
+
+.gol {
+    position: absolute;
+    z-index: 2;
+
+    width: 3.5%;
+    height: 24%;
+
+    background: rgba(4, 35, 22, 0.65);
+
+    border: 4px solid #f4fff5;
+
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.18);
+
+    pointer-events: none;
+}
+
+/* GOL ESQUERDO */
+.gol-esquerda {
+    top: 38%;
+    left: -1px;
+
+    width: 3.5%;
+    height: 24%;
+
+    border-left: 0;
+    border-radius: 0 4px 4px 0;
+}
+
+/* GOL DIREITO */
+.gol-direita {
+    top: 38%;
+    right: -1px;
+
+    left: auto;
+
+    width: 3.5%;
+    height: 24%;
+
+    border-right: 0;
+    border-radius: 4px 0 0 4px;
+}
+
+/* =========================================================
+   PEÇAS DOS JOGADORES
+   ========================================================= */
+
+.botao {
+    position: absolute;
+    z-index: 5;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: clamp(34px, 5.5%, 54px);
+    aspect-ratio: 1;
+
+    padding: 0;
+
+    border: 3px solid rgba(255, 255, 255, 0.92);
+    border-radius: 50%;
+
+    color: #fff;
+    font-size: clamp(0.78rem, 2vw, 1rem);
+    font-weight: 900;
+
+    cursor: pointer;
+    user-select: none;
+    touch-action: manipulation;
+
+    box-shadow:
+        0 5px 10px rgba(0, 0, 0, 0.32),
+        inset 0 2px 4px rgba(255, 255, 255, 0.28);
+
+    transition:
+        filter 0.15s ease,
+        box-shadow 0.15s ease,
+        transform 0.15s ease;
+}
+
+.botao:hover {
+    filter: brightness(1.15);
+    transform: translate(-50%, -50%) scale(1.08);
+}
+
+.botao:focus-visible {
+    outline: 3px solid #fff;
+    outline-offset: 4px;
+}
+
+/* VERMELHOS */
+.botao.vermelho {
+    background: radial-gradient(
+        circle at 32% 25%,
+        #ff9a9e,
+        #f12e3b 58%,
+        #a90d20
+    );
+}
+
+/* AZUIS */
+.botao.azul {
+    background: radial-gradient(
+        circle at 32% 25%,
+        #a5d7ff,
+        #247fe0 58%,
+        #10418f
+    );
+}
+
+/* PEÇA SELECIONADA */
+.botao.selecionado,
+.botao.ativo {
+    z-index: 8;
+
+    filter: brightness(1.25);
+
+    box-shadow:
+        0 0 0 5px rgba(255, 255, 255, 0.55),
+        0 0 22px rgba(255, 255, 255, 0.75),
+        0 6px 12px rgba(0, 0, 0, 0.35);
+}
+
+/* =========================================================
+   POSIÇÕES INICIAIS
+   VERMELHO NA ESQUERDA
+   AZUL NA DIREITA
+   ========================================================= */
+
+/* TIME VERMELHO */
+.p1 {
+    left: 15%;
+    top: 30%;
+    transform: translate(-50%, -50%);
+}
+
+.p2 {
+    left: 29%;
+    top: 22%;
+    transform: translate(-50%, -50%);
+}
+
+.p3 {
+    left: 29%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.p4 {
+    left: 29%;
+    top: 78%;
+    transform: translate(-50%, -50%);
+}
+
+.p5 {
+    left: 15%;
+    top: 70%;
+    transform: translate(-50%, -50%);
+}
+
+/* TIME AZUL */
+.p6 {
+    left: 85%;
+    top: 30%;
+    transform: translate(-50%, -50%);
+}
+
+.p7 {
+    left: 71%;
+    top: 22%;
+    transform: translate(-50%, -50%);
+}
+
+.p8 {
+    left: 71%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.p9 {
+    left: 71%;
+    top: 78%;
+    transform: translate(-50%, -50%);
+}
+
+.p10 {
+    left: 85%;
+    top: 70%;
+    transform: translate(-50%, -50%);
+}
+
+/* =========================================================
+   BOLA
+   ========================================================= */
+
+.bola {
+    position: absolute;
+    z-index: 6;
+
+    top: 50%;
+    left: 50%;
+
+    width: clamp(17px, 3%, 27px);
+    aspect-ratio: 1;
+
+    border: 4px solid #222;
+    border-radius: 56%;
+
+    background: radial-gradient(
+        circle at 32% 28%,
+        #fff 0 18%,
+        #e9e9e9 38%,
+        Gray 72%,
+        Black 100%
+    );
+
+    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.42);
+
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+}
+
+.bola::after {
+    content: "";
+    position: absolute;
+    inset: 28%;
+    background: #000000;
+    border: 1px solid #000000;
+    border-radius: 35%;
+    transform: rotate(25deg);
+}
+
+/* =========================================================
+   MENSAGENS
+   ========================================================= */
+
+.informacoes-partida {
+    width: min(850px, 100%);
+    margin: 18px auto 28px;
+    padding: 14px 18px;
+
+    text-align: center;
+
+    border: 1px solid rgba(92, 255, 174, 0.2);
+    border-radius: 12px;
+
+    background: rgba(8, 28, 21, 0.82);
+}
+
+.informacoes-partida p {
+    margin: 0;
+    color: #d8f7e5;
+    font-weight: 600;
+    line-height: 1.5;
+}
+
+/* RODAPÉ */
+.rodape-pagina {
+    margin-top: 32px;
+    text-align: center;
+}
+
+/* =========================================================
+   RESPONSIVIDADE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+    main {
+        width: 96%;
+    }
+
+    .placar {
+        min-height: 92px;
+        padding: 13px 8px;
+        gap: 5px;
+        border-radius: 14px;
+    }
+
+    .placar .centro {
+        padding: 4px 5px;
+    }
+
+    .placar .centro p {
+        font-size: 0.72rem;
+    }
+
+    .campo {
+        width: 100%;
+        border-width: 5px;
+        border-radius: 8px;
+    }
+
+    .botao {
+        border-width: 2px;
+        width: 6%;
+    }
+
+    .gol {
+        border-width: 3px;
+    }
+
+    .informacoes-partida {
+        padding: 12px;
+    }
+}
+
+@media (max-width: 400px) {
+
+    .placar .time h2 {
+        font-size: 0.82rem;
+    }
+
+    .placar .centro h2 {
+        font-size: 1.35rem;
+    }
+
+    .botao {
+        width: 7%;
+    }
+}
