@@ -34,7 +34,7 @@
                     Regras do jogo
                 </a>
 
-                <a href="{{ url_for('jogo') }}" class="botao-principal">
+                <a href="#selecionar-partida" class="botao-principal">
                     Jogar partida
                 </a>
 
@@ -42,9 +42,29 @@
                     Ver ranking
                 </a>
             </nav>
+            <section id="selecionar-partida" class="painel-cadastro" style="margin-top:24px">
+                <h2>Escolher jogadores</h2>
+                <p>Selecione quem vai jogar em cada lado e inicie a partida.</p>
+                <form id="form-partida">
+                    <label for="jogador-vermelho">Time vermelho</label>
+                    <select id="jogador-vermelho" required>
+                        <option value="">Carregando jogadores...</option>
+                    </select>
+                    <label for="jogador-azul">Time azul</label>
+                    <select id="jogador-azul" required>
+                        <option value="">Carregando jogadores...</option>
+                    </select>
+                    <button type="submit" class="botao-principal" id="btn-iniciar-partida">
+                        Criar partida e jogar
+                    </button>
+                    <p id="mensagem-partida" role="status" aria-live="polite"></p>
+                </form>
+            </section>
         </section>
 
     </main>
+
+    <script src="{{ url_for('static', filename='js/selecionar-jogadores.js') }}"></script>
 
     <footer class="rodape-pagina">
         <p>Stadium do Coffee - Futebol de Botão</p>
