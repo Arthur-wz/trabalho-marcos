@@ -1,6 +1,8 @@
+import psycopg
 
 from flask import Blueprint, jsonify, request
-from database import memoria
+from database.conexao import obter_conexao
+
 
 jogadores_bp = Blueprint("jogadores", __name__)
 
@@ -8,6 +10,7 @@ jogadores_bp = Blueprint("jogadores", __name__)
 # CADASTRAR JOGADOR
 @jogadores_bp.route("/api/jogadores", methods=["POST"])
 def cadastrar_jogador():
+
     dados = request.get_json(silent=True)
 
     if not isinstance(dados, dict):
@@ -40,33 +43,47 @@ def cadastrar_jogador():
             "mensagem": "Nome ou usuário muito longo."
         }), 400
 
-    for jogador in memoria.jogadores:
-        if jogador["usuario"].lower() == usuario.lower():
-            return jsonify({
-                "sucesso": False,
-                "mensagem": "Esse nome de usuário já existe."
-            }), 409
+    # SALVAR JOGADOR NO POSTGRESQL
+    try:
+        with obter_conexao() as conn:
 
-    novo_jogador = {
-        "id": memoria.proximo_jogador_id,
-        "nome": nome,
-        "usuario": usuario
-    }
+            novo_jogador = conn.execute(
+                """
+                INSERT INTO public.jogadores (nome, usuario)
+                VALUES (%s, %s)
+                RETURNING id, nome, usuario
+                """,
+                (nome, usuario)
+            ).fetchone()
 
-    memoria.jogadores.append(novo_jogador)
-    memoria.proximo_jogador_id += 1
+        return jsonify({
+            "sucesso": True,
+            "mensagem": "Jogador cadastrado com sucesso!",
+            "jogador": novo_jogador
+        }), 201
 
-    return jsonify({
-        "sucesso": True,
-        "mensagem": "Jogador cadastrado com sucesso!",
-        "jogador": novo_jogador
-    }), 201
+    except psycopg.errors.UniqueViolation:
+        return jsonify({
+            "sucesso": False,
+            "mensagem": "Esse nome de usuário já existe."
+        }), 409
 
 
 # LISTAR JOGADORES
 @jogadores_bp.route("/api/jogadores", methods=["GET"])
 def listar_jogadores():
+
+    with obter_conexao() as conn:
+
+        jogadores = conn.execute(
+            """
+            SELECT id, nome, usuario
+            FROM public.jogadores
+            ORDER BY id
+            """
+        ).fetchall()
+
     return jsonify({
         "sucesso": True,
-        "jogadores": memoria.jogadores
+        "jogadores": jogadores
     }), 200
