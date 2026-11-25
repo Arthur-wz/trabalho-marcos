@@ -11,6 +11,10 @@ const gols1 = document.getElementById("gols1");
 const gols2 = document.getElementById("gols2");
 const tempoElemento = document.getElementById("tempo");
 const turnoElemento = document.getElementById("turno");
+const nomeVermelhoElemento = document.getElementById("nomeVermelho");
+const nomeAzulElemento = document.getElementById("nomeAzul");
+let nomeVermelho = "Jogador vermelho";
+let nomeAzul = "Jogador azul";
 
 // Verificar elementos necessários
 if (!campo || !bola || botoes.length !== 10) {
@@ -141,11 +145,11 @@ function atualizarTurno() {
 
     if (jogadorDaVez === "vermelho") {
 
-        turnoElemento.textContent = "Vez de Marcos 🔴";
+        turnoElemento.textContent = `Vez de ${nomeVermelho} 🔴`;
 
     } else {
 
-        turnoElemento.textContent = "Vez de Marcus 🔵";
+        turnoElemento.textContent = `Vez de ${nomeAzul} 🔵`;
 
     }
 }
@@ -675,8 +679,8 @@ function registrarGol(gol) {
     // Mensagem do gol
     mensagem.textContent =
         timeQueMarcou === "vermelho"
-            ? "GOOOOL DO MARCOS! 🔴"
-            : "GOOOOL DO MARCUS! 🔵";
+            ? `GOOOOL DO ${nomeVermelho.toUpperCase()}! 🔴`
+            : `GOOOOL DO ${nomeAzul.toUpperCase()}! 🔵`;
 
     // Parar todos os movimentos
     pararMovimento();
@@ -840,12 +844,12 @@ function finalizarPartida() {
     if (pontuacaoVermelho > pontuacaoAzul) {
 
         mensagem.textContent =
-            "FIM DE JOGO! Marcos venceu! 🔴";
+            `FIM DE JOGO! ${nomeVermelho} venceu! 🔴`;
 
     } else if (pontuacaoAzul > pontuacaoVermelho) {
 
         mensagem.textContent =
-            "FIM DE JOGO! Marcus venceu! 🔵";
+            `FIM DE JOGO! ${nomeAzul} venceu! 🔵`;
 
     } else {
 
@@ -917,8 +921,53 @@ function inicializarJogo() {
     atualizarTurno();
 
     mensagem.textContent =
-        "Jogo pronto! Marcos começa. Selecione uma peça vermelha.";
+        `Partida pronta! ${nomeVermelho} começa. Selecione uma peça vermelha.`;
 
 }
 
 inicializarJogo();
+
+async function carregarJogadoresDaPartida() {
+    const partidaId = new URLSearchParams(window.location.search).get("id");
+
+    if (!partidaId) {
+        mensagem.textContent = "Partida sem identificação. Volte ao início e escolha os jogadores.";
+        return;
+    }
+
+    try {
+        const resposta = await fetch(`/api/partidas/${encodeURIComponent(partidaId)}`);
+        const dados = await resposta.json();
+
+        if (!resposta.ok || !dados.sucesso || !dados.partida) {
+            throw new Error(dados.mensagem || "Não foi possível carregar essa partida.");
+        }
+
+        const partida = dados.partida;
+        const respostaJogadores = await fetch("/api/jogadores");
+        const dadosJogadores = await respostaJogadores.json();
+
+        if (!respostaJogadores.ok || !dadosJogadores.sucesso) {
+            throw new Error("Não foi possível carregar os nomes dos jogadores.");
+        }
+
+        const lista = dadosJogadores.jogadores || [];
+        const vermelho = lista.find(j => Number(j.id) === Number(partida.jogador1));
+        const azul = lista.find(j => Number(j.id) === Number(partida.jogador2));
+
+        if (!vermelho || !azul) {
+            throw new Error("Um ou ambos os jogadores desta partida não foram encontrados.");
+        }
+
+        nomeVermelho = vermelho.nome;
+        nomeAzul = azul.nome;
+        nomeVermelhoElemento.textContent = nomeVermelho;
+        nomeAzulElemento.textContent = nomeAzul;
+        atualizarTurno();
+        mensagem.textContent = `Partida carregada: ${nomeVermelho} contra ${nomeAzul}. ${nomeVermelho} começa.`;
+    } catch (erro) {
+        mensagem.textContent = erro.message || "Erro ao carregar os dados da partida.";
+    }
+}
+
+carregarJogadoresDaPartida();
