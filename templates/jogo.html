@@ -62,59 +62,11 @@
 
         </section>
 
-        <!-- CAMPO HORIZONTAL -->
-        <section class="campo campo-horizontal"
-                 aria-label="Campo horizontal de futebol de botão">
-
-            <!-- GOL DA ESQUERDA -->
-            <div class="gol gol-topo gol-esquerda"></div>
-
-            <!-- GOL DA DIREITA -->
-            <div class="gol gol-baixo gol-direita"></div>
-
-            <!-- MARCAÇÕES DO CAMPO -->
-            <div class="linha-meio"></div>
-            <div class="circulo-central"></div>
-
-            <!-- ÁREAS -->
-            <div class="area area-topo area-esquerda"></div>
-            <div class="area area-baixo area-direita"></div>
-
-            <!-- JOGADORES VERMELHOS -->
-            <button type="button" class="botao vermelho p1"
-                    aria-label="Jogador vermelho número 1">1</button>
-
-            <button type="button" class="botao vermelho p2"
-                    aria-label="Jogador vermelho número 2">2</button>
-
-            <button type="button" class="botao vermelho p3"
-                    aria-label="Jogador vermelho número 3">3</button>
-
-            <button type="button" class="botao vermelho p4"
-                    aria-label="Jogador vermelho número 4">4</button>
-
-            <button type="button" class="botao vermelho p5"
-                    aria-label="Jogador vermelho número 5">5</button>
-
-            <!-- BOLA -->
-            <div class="bola" role="img" aria-label="Bola do jogo"></div>
-
-            <!-- JOGADORES AZUIS -->
-            <button type="button" class="botao azul p6"
-                    aria-label="Jogador azul número 1">1</button>
-
-            <button type="button" class="botao azul p7"
-                    aria-label="Jogador azul número 2">2</button>
-
-            <button type="button" class="botao azul p8"
-                    aria-label="Jogador azul número 3">3</button>
-
-            <button type="button" class="botao azul p9"
-                    aria-label="Jogador azul número 4">4</button>
-
-            <button type="button" class="botao azul p10"
-                    aria-label="Jogador azul número 5">5</button>
-
+        <!-- IMAGEM DO CAMPO/ARTE ENVIADA -->
+        <section class="campo-imagem" aria-label="Imagem personalizada da partida">
+            <img src="{{ url_for('static', filename='nao_de_nem_agua.png') }}"
+                 alt="Imagem Não de Nem Água"
+                 style="display:block; width:100%; max-width:1024px; height:auto; margin:0 auto;">
         </section>
 
         <!-- MENSAGENS -->
